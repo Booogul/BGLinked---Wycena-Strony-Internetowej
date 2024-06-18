@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGLinked - Rozpoznanie firmy & Kalkulator ceny strony internetowej</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #682BBD;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 18px;
+            color: #682BBD;
+            margin-bottom: 10px;
+        }
+        .option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .option label {
+            margin-right: 10px;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #682BBD;
+        }
+        .total-cost {
+            font-size: 28px;
+            font-weight: bold;
+            color: green;
+        }
+        .calculate-button, .download-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #682BBD;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .total-cost span {
+            color: green;
+        }
+        .textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            margin-bottom: 20px;
+            resize: vertical;
+        }
+        .small-text {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BGLinked - Wycena Strony Internetowej<br></h1>
+        <div class="section">
+<p class="small-text">Rozpoznanie Firmy</p>
+            <h2>Czym zajmuje się firma?</h2>
+            <textarea class="textarea" id="company-description"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy firma to jednoosobowa działalność, czy w jej skład wchodzi więcej pracowników?</h2>
+            <textarea class="textarea" id="company-type"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czym najbardziej może się pochwalić / Czym wyróżnia się na rynku?</h2>
+            <p class="small-text">(Przykład: lata na rynku, atrakcyjne ceny, opinie klientów, liczba klientów, cecha wyróżniająca na tle konkurencji)</p>
+            <textarea class="textarea" id="company-highlight"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy działa lokalnie, na skale województwa, kraju, Europy, Świata?</h2>
+            <textarea class="textarea" id="company-scope"></textarea>
+        </div>
+        <div class="section">
+<p class="small-text">Analiza wstępna</p>
+            <h2>W jakim stylu ma być stworzona strona?</h2>
+            <textarea class="textarea" id="site-style"></textarea>
+        </div>
+        <div class="section">
+            <h2>Jakie są główne cele i oczekiwania strony?</h2>
+            <p class="small-text">(Przykład: Generowanie leadów, budowanie marki, zwiększenie widoczności, wizytówka, Landing page, inne.)</p>
+            <textarea class="textarea" id="site-goals"></textarea>
+        </div>
+        <div class="section">
+            <h2>Jakie zakładki ma posiadać strona?</h2>
+            <p class="small-text">(Przykład: O firmie, Oferta, Galeria, Kontakt, inne.)</p>
+            <textarea class="textarea" id="site-sections"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy są jakieś istotne funkcjonalności, które mają być na stronie?</h2>
+            <p class="small-text">(Przykład: Formularz kontaktowy, Mapa Google, Odnośniki do mediów społecznościowych, inne)</p>
+            <textarea class="textarea" id="site-functions"></textarea>
+        </div>
+        <div class="section">
+            <h2>Identyfikacja wizualna – jakie kolory i czcionki mają być na stronie. Czy jest księga identyfikacji wizualnej? Czy firma ma logo?</h2>
+            <textarea class="textarea" id="visual-identity"></textarea>
+        </div>
+        <div class="section">
+<p class="small-text">Analiza treści</p>
+            <h2>Czy treści na stronę będą dostarczone, czy ma to wejść w skład strony?</h2>
+            <textarea class="textarea" id="content-delivery"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy występują często zadawane pytania, które można będzie zawrzeć na stronie?</h2>
+            <textarea class="textarea" id="faq"></textarea>
+        </div>
+        <div class="section">
+            <h2>Pod jaką frazę ma nastąpić pozycjonowanie strony?</h2>
+            <textarea class="textarea" id="seo-keywords"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy strona ma wyświetlać opinie Google?</h2>
+            <textarea class="textarea" id="google-reviews"></textarea>
+        </div>
+        <div class="section">
+            <h2>Czy zdjęcia na stronie mają ukazywać firmę czy można wykorzystać zdjęcia z banku zdjęć?</h2>
+            <textarea class="textarea" id="photos"></textarea>
+        </div>
+
+        <div class="section">
+            <h2>Wybierz pakiet:</h2>
+            <div class="option">
+                <label><input type="radio" name="package" value="1430" data-months="✔ 1"> Pakiet Start (1430zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="radio" name="package" value="2280" data-months="✔ Treści na stronę
+✔ Indywidualne grafiki
+✔ Szkolenie
+✔ Podpięcie mapy strony
+✔ 3"> Pakiet Standard (2280zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="radio" name="package" value="3870" data-months="✔ Treści na stronę
+✔ Indywidualne grafiki
+✔ Szkolenie
+✔ Podpięcie mapy strony
+✔ Moduł aktualności (blog)
+✔ Darmowa dodatkowa uługa
+✔ 6"> Pakiet Biznes (3870zł)</label>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Podstawa:</h2>
+            <div class="option">
+                <label>
+✔ CMS WordPress<br>
+✔ Nowoczesny wygląd<br>
+✔ Wersja na telefon<br>
+✔ Indywidualny projekt<br>
+✔ Przekazanie praw autorskich<br>
+✔ Możliwość samodzielnej edycji<br>
+✔ Formularz kontaktowy<br>
+✔ Mapa Google<br>
+✔ Podpięcie mediów społecznościowych<br>
+✔ Wsparcie techniczne<br>
+✔ Pomoc w doborze hostingu<br>
+✔ Polityka prywatności<br>
+✔ Galeria zdjęć<br>
+✔ Sekcja FAQ<br>
+✔ Zdjęcia z banku<br></label>
+                <span class="admin-months-info"></span>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Wybierz dodatkowe usługi:</h2>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="120"> Treści na stronę (od 120zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="250"> Dodatkowa podstrona (od 250zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="150"> Dodatkowa wersja językowa (od 150zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="180"> Blog (od 180zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="90"> Treść na bloga (od 90zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="150"> Czat na żywo (od 150zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="200"> Poprawa wydajności strony (od 200zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="30"> Korekta tekstów (od 30zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="300"> Sesja zdjęciowa (od 300zł)</label>
+            </div>
+            <div class="option">
+                <label><input type="checkbox" class="additional-service" data-cost="50"> Jednorazowa aktualizacja wtyczek (od 50zł)</label>
+            </div>
+        </div>
+        <div class="section">
+            <h2>Administracja strony:</h2>
+            <div class="option">
+                <label>Administracja strony (od 100zł / miesiąc)</label>
+                <span class="admin-months-info"></span>
+            </div>
+        </div>
+        <button class="calculate-button">Oblicz</button>
+        <div class="result">Orientacyjny koszt stworzenia strony: <span id="total-cost" class="total-cost">0</span> netto</div>
+        <div class="section">
+            <h2>Nazwa Firmy:</h2>
+            <input type="text" id="company-name" placeholder="Wpisz nazwę firmy">
+        </div>
+        <div class="section">
+            <h2>Data wyceny:</h2>
+            <input type="text" id="quote-date" readonly>
+        </div>
+        <button class="download-button">Pobierz wycenę</button>
+    </div>
+    <script>
+        const packageOptions = document.querySelectorAll('input[name="package"]');
+        const additionalServices = document.querySelectorAll('.additional-service');
+        const totalCostElement = document.getElementById('total-cost');
+        const adminMonthsInfo = document.querySelector('.admin-months-info');
+        const calculateButton = document.querySelector('.calculate-button');
+        const downloadButton = document.querySelector('.download-button');
+        const companyNameInput = document.getElementById('company-name');
+        const quoteDateInput = document.getElementById('quote-date');
+
+        const companyDescriptionInput = document.getElementById('company-description');
+        const companyTypeInput = document.getElementById('company-type');
+        const companyHighlightInput = document.getElementById('company-highlight');
+        const companyScopeInput = document.getElementById('company-scope');
+        const siteStyleInput = document.getElementById('site-style');
+        const siteGoalsInput = document.getElementById('site-goals');
+        const siteSectionsInput = document.getElementById('site-sections');
+        const siteFunctionsInput = document.getElementById('site-functions');
+        const visualIdentityInput = document.getElementById('visual-identity');
+        const contentDeliveryInput = document.getElementById('content-delivery');
+        const faqInput = document.getElementById('faq');
+        const seoKeywordsInput = document.getElementById('seo-keywords');
+        const googleReviewsInput = document.getElementById('google-reviews');
+        const photosInput = document.getElementById('photos');
+
+        function updateAdminInfo() {
+            packageOptions.forEach(option => {
+                if (option.checked) {
+                    const includedMonths = option.dataset.months;
+                    adminMonthsInfo.innerText = `${includedMonths} miesiąc(e) obsługi administracyjnej GRATIS`;
+                }
+            });
+        }
+
+        function calculateTotal() {
+            let totalCost = 0;
+
+            packageOptions.forEach(option => {
+                if (option.checked) {
+                    totalCost += parseInt(option.value);
+                }
+            });
+
+            additionalServices.forEach(service => {
+                if (service.checked) {
+                    totalCost += parseInt(service.dataset.cost);
+                }
+            });
+
+            totalCostElement.innerHTML = `${totalCost} <span>zł</span>`;
+        }
+
+        function updateQuoteDate() {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('pl-PL', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            const formattedTime = now.toLocaleTimeString('pl-PL', { hour: '2-digit', minute: '2-digit' });
+            quoteDateInput.value = `${formattedDate} ${formattedTime}`;
+        }
+
+        function downloadQuote() {
+            const companyName = companyNameInput.value || "Nie podano";
+            const quoteDate = quoteDateInput.value;
+            const totalCost = totalCostElement.innerText;
+
+            let selectedPackage = "Nie wybrano";
+            packageOptions.forEach(option => {
+                if (option.checked) {
+                    selectedPackage = option.parentElement.innerText.trim();
+                }
+            });
+
+            let selectedServices = [];
+            additionalServices.forEach(service => {
+                if (service.checked) {
+                    selectedServices.push(service.parentElement.innerText.trim());
+                }
+            });
+
+            const quoteText = `
+                Nazwa Firmy: ${companyName}
+                Data wyceny: ${quoteDate}
+
+                Czym zajmuje się firma?: ${companyDescriptionInput.value}
+                Czy firma to jednoosobowa działalność, czy w jej skład wchodzi więcej pracowników?: ${companyTypeInput.value}
+                Czym najbardziej może się pochwalić / Czym wyróżnia się na rynku?: ${companyHighlightInput.value}
+                Czy działa lokalnie, na skale województwa, kraju, Europy, Świata?: ${companyScopeInput.value}
+                W jakim stylu ma być stworzona strona?: ${siteStyleInput.value}
+                Jakie są główne cele i oczekiwania strony?: ${siteGoalsInput.value}
+                Jakie zakładki ma posiadać strona?: ${siteSectionsInput.value}
+                Czy są jakieś istotne funkcjonalności, które mają być na stronie?: ${siteFunctionsInput.value}
+                Identyfikacja wizualna – jakie kolory i czcionki mają być na stronie. Czy jest księga identyfikacji wizualnej? Czy firma ma logo?: ${visualIdentityInput.value}
+                Czy treści na stronę będą dostarczone, czy ma to wejść w skład strony?: ${contentDeliveryInput.value}
+                Czy występują często zadawane pytania, które można będzie zawrzeć na stronie?: ${faqInput.value}
+                Pod jaką frazę ma nastąpić pozycjonowanie strony?: ${seoKeywordsInput.value}
+                Czy strona ma wyświetlać opinie Google?: ${googleReviewsInput.value}
+                Czy zdjęcia na stronie mają ukazywać firmę czy można wykorzystać zdjęcia z banku zdjęć?: ${photosInput.value}
+
+                Wybrany pakiet: ${selectedPackage}
+                Dodatkowe usługi: ${selectedServices.join(", ")}
+
+                Orientacyjny koszt stworzenia strony: ${totalCost} netto
+
+BGLinked - Tworzenie Stron Internetowych
+
+Tomasz Bogulski
+tel.: 697746613
+mail: kontakt@bglinked.pl
+            `;
+
+            const blob = new Blob([quoteText], { type: "text/plain;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "wycena.txt";
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        packageOptions.forEach(option => {
+            option.addEventListener('change', updateAdminInfo);
+        });
+
+        calculateButton.addEventListener('click', calculateTotal);
+        downloadButton.addEventListener('click', downloadQuote);
+
+        // Initial update for admin months info and quote date
+        updateAdminInfo();
+        updateQuoteDate();
+    </script>
+</body>
+</html>
